@@ -4,17 +4,23 @@ import Product from '../Product/Product';
 import './Shop.css';
 
 const Shop = () => {
-    const fast10 = fakeData.slice(0,10);
+    const fast10 = fakeData.slice(0, 10);
     const [products, setProducts] = useState(fast10);
+
+    const handleAddProduct = (product) => {
+        console.log('Product added', product);
+    }
     return (
         <div className="shop-container">
             <div className="product-container">
-                    {
-                        products.map(product=> <Product product={product}></Product>)
-                    }
+                {
+                    products.map(product => <Product
+                        handleAddProduct={handleAddProduct}
+                        product={product}></Product>)
+                }
             </div>
             <div className="cart-container">
-                    <h3>This is a cart</h3>
+                <h3>This is a cart</h3>
             </div>
         </div>
     );
