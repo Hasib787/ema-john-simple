@@ -9,6 +9,7 @@
     color: blue;
     font-weight: 400;
     margin-left: 5px;
+    cursor: pointer;
 }
 .product-name:hover{
     color: rgb(27, 27, 141);
@@ -19,4 +20,5 @@
     width: 200px;
     border: 1px solid black;
     border-radius: 3px;
+    cursor: pointer;
 }
