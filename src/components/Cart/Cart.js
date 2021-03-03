@@ -29,7 +29,7 @@ const Cart = (props) => {
 
     return (
         <div>
-            <h4>Order Summery</h4>
+            <h4 className="text-primary">Order Summery</h4>
             <p>Items Ordered: {cart.length}</p>
             <p>Product Total: {formatNumber(total)}</p>
             <p><small>Shipping Cost: {shipping}</small></p>
