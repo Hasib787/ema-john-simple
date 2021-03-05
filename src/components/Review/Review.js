@@ -7,8 +7,11 @@ const Review = () => {
     useEffect(() => {
         //cart
         const savedData = getDatabaseCart();
-        console.log(savedData);
-    }, [])
+        const productKeys = Object.keys(savedData);
+        const counts= productKeys.map(key => savedData[key]);
+
+        console.log(counts);
+    })
     return (
         <div>
             <h1>This is review</h1>
