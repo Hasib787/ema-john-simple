@@ -1,15 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import fakeData from '../../fakeData';
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import './Shop.css';
-import { addToDatabaseCart } from '../../utilities/databaseManager';
+import { addToDatabaseCart, getDatabaseCart } from '../../utilities/databaseManager';
 
 
 const Shop = () => {
     const fast10 = fakeData.slice(0, 10);
     const [products, setProducts] = useState(fast10);
     const [cart, setCart] = useState([]);
+
+    useEffect(()=>{
+        const savedCart = getDatabaseCart();
+        console.log(savedCart);
+    }, [])
 
     const handleAddProduct = (product) => {
         const toBeAddedKey = product.key;
