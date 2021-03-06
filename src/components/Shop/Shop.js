@@ -19,7 +19,7 @@ const Shop = () => {
         addToDatabaseCart(product.key, count);
     }
     return (
-        <div className="shop-container">
+        <div className="common-container">
             <div className="product-container">
                 {
                     products.map(product => <Product
