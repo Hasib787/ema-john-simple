@@ -1,7 +1,7 @@
 import './App.css';
 import Header from './components/Header/Header';
 import Shop from './components/Shop/Shop';
-import React from "react";
+import React, { useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -12,39 +12,49 @@ import Inventory from './components/Inventory/Inventory';
 import NotFound from './components/NotFound/NotFound';
 import ProductDetails from './components/productDetails/ProductDetails';
 import Shipment from './components/Shipment/Shipment';
+import Login from './components/Login/Login';
+import { createContext } from 'react';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+
+export const UserContext = createContext();
 
 function App() {
+  const [loggedInUser, setLoggedInUser] = useState({});
   return (
-    <div>
-      <Header></Header>
+    <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
+      <h3>Emial:{loggedInUser.email}</h3>
+      <Header />
       <Router>
         <Switch>
           <Route path="/Shop">
-            <Shop></Shop>
+            <Shop />
           </Route>
           <Route path="/review">
-            <Review></Review>
+            <Review />
           </Route>
-          <Route path="/inventory">
-            <Inventory></Inventory>
+          <PrivateRoute path="/inventory">
+            <Inventory />
+          </PrivateRoute>
+          <Route path="/login">
+            <Login />
           </Route>
+          <PrivateRoute path="/shipment">
+            <Shipment />
+          </PrivateRoute>
           <Route exact path="/">
-            <Shop></Shop>
+            <Shop />
           </Route>
           <Route path="/product/:productKey">
-            <ProductDetails></ProductDetails>
-          </Route>
-          <Route path="/shipment">
-            <Shipment />
+            <ProductDetails />
           </Route>
           <Route path="*">
-            <NotFound></NotFound>
+            <NotFound />
           </Route>
         </Switch>
       </Router>
 
 
-    </div>
+    </UserContext.Provider>
   );
 }
 
