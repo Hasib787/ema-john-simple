@@ -25,7 +25,7 @@ const Review = () => {
         const savedCart = getDatabaseCart();
         const productkeys = Object.keys(savedCart);
 
-        fetch('http://localhost:5000/productByKeys',{
+        fetch('https://apricot-cupcake-77322.herokuapp.com/productByKeys',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
