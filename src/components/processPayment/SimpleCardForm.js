@@ -31,8 +31,10 @@ const SimpleCardForm = () => {
 
         if (error) {
             setPaymentError(error.message);
+            setPaymentSuccess(null);
         } else {
-            console.log('[PaymentMethod]', paymentMethod);
+            setPaymentSuccess(paymentMethod.id);
+            setPaymentError(null);
         }
     };
 
@@ -46,6 +48,9 @@ const SimpleCardForm = () => {
             </form>
             {
                 paymentError && <p style={{ color:'red'}}>{paymentError}</p>
+            }
+            {
+                paymentSuccess && <p style={{ color:'green'}}>Your Payment was Successful</p>
             }
         </div>
     );
